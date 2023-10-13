@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JapanApp</string>
+    <string name="app_name">japanese-app-android</string>
     <string-array name="alphabet">
         <item>Hiragana</item>
         <item>Katakana</item>
