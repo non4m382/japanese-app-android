@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- User Info Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00bcd4"
+        android:padding="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/avatarImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/profile_pic"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp">
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:text="Chỉnh sửa"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Home Button -->
+
+    <!-- Course Selection -->
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:text="Trang chủ" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lựa chọn học phần"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="22dp"
+
+        />
+
+    <!-- Icons Section -->
+    <GridLayout
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content">
+
+    <!-- First Section -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hán Tự"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+        <ImageView
+            android:id="@+id/han_tu"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:src="@drawable/han_tu"
+            android:scaleType="centerCrop"
+            android:layout_margin="25dp"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Từ vựng"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+        <ImageView
+            android:id="@+id/tu_vung"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:src="@drawable/tu_vung"
+            android:scaleType="centerCrop"
+            android:layout_margin="25dp"/>
+
+    </LinearLayout>
+    </GridLayout>
+
+
+</LinearLayout>
