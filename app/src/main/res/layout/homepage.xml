@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,12 +54,16 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity=""
-                android:layout_marginRight="30dp"
-                android:src="@android:drawable/ic_menu_help"
-                android:backgroundTint="@android:color/transparent" />
+                android:src="@drawable/headset_mic"
+                app:backgroundTint="@android:color/transparent"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:layout_anchorGravity="bottom|end"
+                android:layout_marginRight="30dp"/>
         </RelativeLayout>
 
         <LinearLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -96,9 +101,9 @@
                         android:src="@drawable/sach1" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="25sp"
+                        android:gravity="center"
                         android:text="So cap"
                         android:textSize="18sp"
 
@@ -108,8 +113,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingLeft="25sp">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="100sp"
@@ -117,9 +121,9 @@
                         android:src="@drawable/sach1" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="25sp"
+                        android:gravity="center"
                         android:text="So cap"
                         android:textSize="18sp"
 
@@ -128,19 +132,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:paddingLeft="25sp">
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_width="100sp"
-                        android:layout_height="100sp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:src="@drawable/sach1" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="25sp"
+                        android:gravity="center"
                         android:text="So cap"
                         android:textSize="18sp"
 
@@ -179,11 +183,10 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="30sp">
+                    android:gravity="center">
 
                     <ImageView
                         android:layout_width="100sp"
@@ -191,20 +194,18 @@
                         android:src="@drawable/sach1" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="25sp"
+                        android:gravity="center"
                         android:text="So cap"
-                        android:textSize="18sp"
-
-                        />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="25sp">
+                    android:gravity="center">
 
                     <ImageView
                         android:layout_width="100sp"
@@ -212,13 +213,11 @@
                         android:src="@drawable/sach1" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="25sp"
+                        android:gravity="center"
                         android:text="So cap"
-                        android:textSize="18sp"
-
-                        />
+                        android:textSize="18sp"/>
                 </LinearLayout>
 
 
@@ -268,11 +267,12 @@
                         android:text="Ngữ Pháp"
                         android:textStyle="bold"/>
                     <TextView
+                        android:id="@+id/tvNguPhap1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="5"
                         android:ellipsize="end"
-                        android:text="返ばめをざ地来ラヒシ切新いこや秀構移せわ大都びもでじ護育ミナキ掲売べ株時ヌオミサ文人ラウマリ時水ねあめ申下調よ応立てみをご学材造拓泰をもるう。同ネカテ児飛ナニヒ県禁ホチ処統裏あづ属全ヨソコア表況ゃ一本ヒリマム提月かづこま看手支渉取機到岳らン。平ぎ販必イセフヤ主新サ程造れびは広7同戒ヤマオキ誉29稿リ察北ゆろ支阪ょふ的24歩げみ治重ラフ埼59巨善32拓泰おほぞ。"/>
+                        android:text="Ngữ Pháp 1 返ばめをざ地来ラヒシ切新いこや秀構移せわ大都びもでじ護育ミナキ掲売べ株時ヌオミサ文人ラウマリ時水ねあめ申下調よ応立てみをご学材造拓泰をもるう。同ネカテ児飛ナニヒ県禁ホチ処統裏あづ属全ヨソコア表況ゃ一本ヒリマム提月かづこま看手支渉取機到岳らン。平ぎ販必イセフヤ主新サ程造れびは広7同戒ヤマオキ誉29稿リ察北ゆろ支阪ょふ的24歩げみ治重ラフ埼59巨善32拓泰おほぞ。"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -292,11 +292,12 @@
                         android:text="Ngữ Pháp"
                         android:textStyle="bold"/>
                     <TextView
+                        android:id="@+id/tvNguPhap2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="5"
                         android:ellipsize="end"
-                        android:text="返ばめをざ地来ラヒシ切新いこや秀構移せわ大都びもでじ護育ミナキ掲売べ株時ヌオミサ文人ラウマリ時水ねあめ申下調よ応立てみをご学材造拓泰をもるう。同ネカテ児飛ナニヒ県禁ホチ処統裏あづ属全ヨソコア表況ゃ一本ヒリマム提月かづこま看手支渉取機到岳らン。平ぎ販必イセフヤ主新サ程造れびは広7同戒ヤマオキ誉29稿リ察北ゆろ支阪ょふ的24歩げみ治重ラフ埼59巨善32拓泰おほぞ。"/>
+                        android:text="Ngữ Pháp 2 返ばめをざ地来ラヒシ切新いこや秀構移せわ大都びもでじ護育ミナキ掲売べ株時ヌオミサ文人ラウマリ時水ねあめ申下調よ応立てみをご学材造拓泰をもるう。同ネカテ児飛ナニヒ県禁ホチ処統裏あづ属全ヨソコア表況ゃ一本ヒリマム提月かづこま看手支渉取機到岳らン。平ぎ販必イセフヤ主新サ程造れびは広7同戒ヤマオキ誉29稿リ察北ゆろ支阪ょふ的24歩げみ治重ラフ埼59巨善32拓泰おほぞ。"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -316,11 +317,12 @@
                         android:text="Ngữ Pháp"
                         android:textStyle="bold"/>
                     <TextView
+                        android:id="@+id/tvNguPhap3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="5"
                         android:ellipsize="end"
-                        android:text="返ばめをざ地来ラヒシ切新いこや秀構移せわ大都びもでじ護育ミナキ掲売べ株時ヌオミサ文人ラウマリ時水ねあめ申下調よ応立てみをご学材造拓泰をもるう。同ネカテ児飛ナニヒ県禁ホチ処統裏あづ属全ヨソコア表況ゃ一本ヒリマム提月かづこま看手支渉取機到岳らン。平ぎ販必イセフヤ主新サ程造れびは広7同戒ヤマオキ誉29稿リ察北ゆろ支阪ょふ的24歩げみ治重ラフ埼59巨善32拓泰おほぞ。"/>
+                        android:text="Ngữ Pháp 3 返ばめをざ地来ラヒシ切新いこや秀構移せわ大都びもでじ護育ミナキ掲売べ株時ヌオミサ文人ラウマリ時水ねあめ申下調よ応立てみをご学材造拓泰をもるう。同ネカテ児飛ナニヒ県禁ホチ処統裏あづ属全ヨソコア表況ゃ一本ヒリマム提月かづこま看手支渉取機到岳らン。平ぎ販必イセフヤ主新サ程造れびは広7同戒ヤマオキ誉29稿リ察北ゆろ支阪ょふ的24歩げみ治重ラフ埼59巨善32拓泰おほぞ。"/>
                 </LinearLayout>
             </LinearLayout>
 
