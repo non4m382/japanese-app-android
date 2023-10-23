@@ -5,5 +5,25 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="HeaderMenu">
+        <item name="android:background">@color/blue</item>
+    </style>
+
+    <style name="button_style">
+        <item name="android:textColor">#FFA726</item>
+        <item name="android:backgroundTint">#00FFFFFF</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">#FFA726</item>
+        <item name="cornerRadius">5dp</item>
+    </style>
+
+    <style name="button_style2">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:backgroundTint">#00FFFFFF</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">#FFFFFF</item>
+        <item name="cornerRadius">5dp</item>
+    </style>
+
     <style name="Theme.Japaneseappandroid" parent="Base.Theme.Japaneseappandroid" />
 </resources>
