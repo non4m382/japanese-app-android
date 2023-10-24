@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Profile Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00bcd4"
+            android:padding="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/avatarImageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/profile_pic"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp">
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textSize="18sp"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#00bcd4"
+                    android:text="Update Avatar"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Input Fields -->
+        <EditText
+            android:minHeight="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:minHeight="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mail"
+            android:layout_marginTop="16dp"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:minHeight="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:layout_marginTop="16dp"
+            android:inputType="phone" />
+
+        <EditText
+            android:minHeight="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date of birth"
+            android:layout_marginTop="16dp"
+            android:inputType="date" />
+
+        <!-- Save Button -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#00bcd4"
+            android:text="Save"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>
