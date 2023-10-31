@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JapanApp</string>
+    <string-array name="alphabet">
+        <item>Hiragana</item>
+        <item>Katakana</item>
+    </string-array>
+</resources>
