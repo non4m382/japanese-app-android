@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="409dp"
+        android:layout_height="100dp"
+        android:background="#00bcd5"
+        tools:ignore="MissingConstraints">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/bg_spinner"
+            android:entries="@array/alphabet"
+
+            />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="35dp"
+            android:background="#00bcd5"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:text="Chọn bảng chữ cái"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="409dp"
+        android:layout_height="629dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bg_table"
+        android:padding="20dp"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:ignore="MissingConstraints">
+
+        <TableRow android:background="@drawable/bg_table">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="あ"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="い"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="う"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="え"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="お"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow android:background="@drawable/bg_table">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="か"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="き"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="く"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="け"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:background="@drawable/bg_table"
+                android:gravity="center"
+                android:text="こ"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
