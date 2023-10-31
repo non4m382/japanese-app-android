@@ -1,4 +1,4 @@
-package com.example.japanapp;
+package com.example.japanese_app_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
