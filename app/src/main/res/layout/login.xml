@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:padding="32dp"
-    tools:context=".MainActivity"
-    android:background="@drawable/background">
+    tools:context=".MainActivity">
+
     <LinearLayout
 
         android:layout_width="match_parent"
@@ -73,8 +75,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:minHeight="48dp"
                 android:onClick="onLoginLinkClick"
-                android:text="Đã chưa có tài khoản? " android:minHeight="48dp"
+                android:text="Đã chưa có tài khoản? "
                 android:textSize="20sp" />
 
             <TextView
@@ -82,10 +85,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:minHeight="48dp"
                 android:onClick="onLoginLinkClick"
                 android:text="Đăng Ký"
                 android:textColor="#0000FF"
-                android:textSize="20sp" android:minHeight="48dp"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>

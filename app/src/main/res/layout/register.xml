@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:padding="32dp"
-    tools:context=".MainActivity"
-    android:background="@drawable/background">
+    tools:context=".MainActivity">
 
     <LinearLayout
 
@@ -38,9 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/logo"
-            android:minHeight="48dp"
             android:layout_marginBottom="16dp"
             android:hint="Họ và tên"
+            android:minHeight="48dp"
             android:paddingLeft="16dp" />
 
         <EditText
@@ -72,9 +71,8 @@
             android:layout_marginBottom="32dp"
             android:hint="Nhập lại mật khẩu"
             android:inputType="textPassword"
-            android:paddingLeft="16dp"
             android:minHeight="48dp"
-            />
+            android:paddingLeft="16dp" />
 
         <Button
             android:id="@+id/registerButton"
@@ -94,23 +92,25 @@
             android:orientation="horizontal">
 
             <TextView
-            android:id="@+id/loginLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="onLoginLinkClick"
-            android:text="Đã có tài khoản? " android:minHeight="48dp"
-            android:textSize="20sp" />
+                android:id="@+id/loginLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:minHeight="48dp"
+                android:onClick="onLoginLinkClick"
+                android:text="Đã có tài khoản? "
+                android:textSize="20sp" />
 
             <TextView
-            android:id="@+id/loginLinkClickable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="onLoginLinkClick"
-            android:text="Đăng nhập"
-            android:textColor="#0000FF"
-            android:textSize="20sp" android:minHeight="48dp"/>
+                android:id="@+id/loginLinkClickable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:minHeight="48dp"
+                android:onClick="onLoginLinkClick"
+                android:text="Đăng nhập"
+                android:textColor="#0000FF"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>

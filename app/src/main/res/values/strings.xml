@@ -4,4 +4,6 @@
         <item>Hiragana</item>
         <item>Katakana</item>
     </string-array>
+    <string name="action_spinner">Category</string>
+    <string name="favorite">favorite</string>
 </resources>

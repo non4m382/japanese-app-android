@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".radical.RadicalActivity">
 
-    <Button
-        android:id="@+id/btn_next_radical"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/tool_bar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_chapters"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#F19B9B"
-        android:text="Radical"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:onClick="btnNextRadicalOnClick"/>
+        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
