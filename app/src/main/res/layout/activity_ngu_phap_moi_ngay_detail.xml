@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NguPhapMoiNgayDetail"
+    android:background="@color/blue"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_marginLeft="50dp"
+            android:id="@+id/npTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NGỮ PHÁP N2"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@android:drawable/ic_delete" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/npDetail"
+        android:layout_margin="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="返ばめをざ地来ラヒシ切新いこや秀構移せわ大都びもでじ護育ミナキ掲売べ株時ヌオミサ文人ラウマリ時水ねあめ申下調よ応立てみをご学材造拓泰をもるう"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+</LinearLayout>
