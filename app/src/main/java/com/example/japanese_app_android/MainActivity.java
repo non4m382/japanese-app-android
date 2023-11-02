@@ -2,6 +2,8 @@ package com.example.japanese_app_android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,5 +43,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent3);
         });
 
+    }
+
+    public void openRadicalActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, RadicalActivity.class);
+        Log.d("main_activity", "radical clicked");
+        startActivity(intent);
     }
 }

@@ -188,16 +188,18 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <ImageView
+                    <ImageButton
                         android:layout_width="100sp"
                         android:layout_height="100sp"
-                        android:src="@drawable/sach1" />
+                        android:onClick="openRadicalActivity"
+                        android:src="@drawable/ic_radical" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="So cap"
+                        android:text="Bộ thủ"
+
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -207,16 +209,16 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <ImageView
+                    <ImageButton
                         android:layout_width="100sp"
                         android:layout_height="100sp"
-                        android:src="@drawable/sach1" />
+                        android:src="@drawable/ic_vocabulary" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="So cap"
+                        android:text="Bảng chữ cái"
                         android:textSize="18sp"/>
                 </LinearLayout>
 

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">japanese-app-android</string>
+    <string name="select_radical">Chọn bộ thủ</string>
+    <string name="back">Back</string>
+
     <style name="button_style">
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:backgroundTint">#00FFFFFF</item>

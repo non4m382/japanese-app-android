@@ -16,6 +16,10 @@
             android:name=".NguPhapMoiNgayDetail"
             android:exported="false" />
         <activity
+            android:name=".RadicalActivity"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
