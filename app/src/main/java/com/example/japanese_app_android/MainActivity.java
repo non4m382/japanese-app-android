@@ -1,6 +1,10 @@
 package com.example.japanese_app_android;
 
+import static com.example.japanese_app_android.constant.CommonConstant.LOGGED;
+import static com.example.japanese_app_android.constant.CommonConstant.PROJECT_PREFERENCES;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,10 +16,19 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvNguPhapDetail1, tvNguPhapDetail2, tvNguPhapDetail3;
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
+        sharedPreferences = getSharedPreferences(PROJECT_PREFERENCES, MODE_PRIVATE);
+
+        if (!sharedPreferences.getBoolean(LOGGED, false)) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         //Lấy dữ liệu của Ngữ Pháp detail để đẩy sang NguPhapMoiNgayDetail.class
         //Các bạn truyền dữ liệu vào thì tự sửa nhé, mình đang để dữ liệu ảo <3

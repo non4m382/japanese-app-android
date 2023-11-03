@@ -53,7 +53,7 @@
             android:paddingLeft="16dp" />
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/confirmPasswordInput"
@@ -61,6 +61,14 @@
             android:text="ĐĂNG NHẬP"
             android:textColor="#FFFFFF" />
 
+        <TextView
+            android:id="@+id/loginError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:minHeight="48dp"
+            android:textColor="#0000FF"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -74,20 +82,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:onClick="onLoginLinkClick"
-                android:text="Đã chưa có tài khoản? " android:minHeight="48dp"
+                android:minHeight="48dp"
+                android:text="Chưa có tài khoản? "
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/loginLinkClickable"
+                android:id="@+id/txtGoToRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:onClick="onLoginLinkClick"
+                android:minHeight="48dp"
                 android:text="Đăng Ký"
                 android:textColor="#0000FF"
-                android:textSize="20sp" android:minHeight="48dp"/>
-
+                android:textSize="20sp" />
         </LinearLayout>
+
+
     </LinearLayout>
 </RelativeLayout>
