@@ -40,6 +40,8 @@ public class RadicalActivity extends AppCompatActivity {
 
     RadicalApi radicalApi;
 
+    List<CategoryEntity> categoryEntities = new ArrayList<>();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +51,8 @@ public class RadicalActivity extends AppCompatActivity {
         spinner = findViewById(R.id.category_spinner);
         retrofitService = new RetrofitService(getApplicationContext());
         radicalApi = retrofitService.getRetrofit().create(RadicalApi.class);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
         getCategoryList();
-        setRecycleView();
     }
 
     private void setSpinner(List<CategoryEntity> categoryEntities) {
@@ -69,7 +66,8 @@ public class RadicalActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 CategoryEntity category = (CategoryEntity) parent.getSelectedItem();
                 displayUserData(category);
-                Log.d("ok", "checked");
+                Log.d("ok", category.getId().toString());
+                getRadicalByCategory(category.getId());
             }
 
             @Override
@@ -89,29 +87,11 @@ public class RadicalActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), userData, Toast.LENGTH_SHORT).show();
     }
 
-    private void setRecycleView() {
+    private void setRecycleView(List<RadicalEntity> radicalEntities) {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RadicalAdapter(this, getList());
+        adapter = new RadicalAdapter(this, radicalEntities);
         recyclerView.setAdapter(adapter);
-    }
-
-    private List<RadicalEntity> getList() {
-        List<RadicalEntity> radicalList = new ArrayList<>();
-        radicalList.add(new RadicalEntity(1L, 1, "一", "Nhất", "Số 1", 1));
-        radicalList.add(new RadicalEntity(2L, 2, "〡", "Cổn", "nét sổ", 1));
-        radicalList.add(new RadicalEntity(1L, 1, "一", "Nhất", "Số 1", 1));
-        radicalList.add(new RadicalEntity(2L, 2, "〡", "Cổn", "nét sổ", 1));
-        radicalList.add(new RadicalEntity(1L, 1, "一", "Nhất", "Số 1", 1));
-        radicalList.add(new RadicalEntity(2L, 2, "〡", "Cổn", "nét sổ", 1));
-        radicalList.add(new RadicalEntity(1L, 1, "一", "Nhất", "Số 1", 1));
-        radicalList.add(new RadicalEntity(2L, 2, "〡", "Cổn", "nét sổ", 1));
-        radicalList.add(new RadicalEntity(1L, 1, "一", "Nhất", "Số 1", 1));
-        radicalList.add(new RadicalEntity(2L, 2, "〡", "Cổn", "nét sổ", 1));
-        radicalList.add(new RadicalEntity(1L, 1, "一", "Nhất", "Số 1", 1));
-        radicalList.add(new RadicalEntity(2L, 2, "〡", "Cổn", "nét sổ", 1));
-        radicalList.add(new RadicalEntity(3L, 3, "丶", "Chủ", "điểm,chấm", 1));
-        return radicalList;
     }
 
     public void openHomepage(View view) {
@@ -120,7 +100,6 @@ public class RadicalActivity extends AppCompatActivity {
     }
 
     private void getCategoryList() {
-        List<CategoryEntity> categoryEntities = new ArrayList<>();
         radicalApi.getAllCategories().enqueue(new Callback<GeneralResponse<List<CategoryEntity>>>() {
             @Override
             public void onResponse(Call<GeneralResponse<List<CategoryEntity>>> call, Response<GeneralResponse<List<CategoryEntity>>> response) {
@@ -139,6 +118,25 @@ public class RadicalActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void getRadicalByCategory(Integer id) {
+        List<RadicalEntity> radicalEntities = new ArrayList<>();
+        radicalApi.getRadicalByCategory(id).enqueue(new Callback<GeneralResponse<List<RadicalEntity>>>() {
+            @Override
+            public void onResponse(Call<GeneralResponse<List<RadicalEntity>>> call, Response<GeneralResponse<List<RadicalEntity>>> response) {
+                if (response.isSuccessful()) {
+                    GeneralResponse<List<RadicalEntity>> generalResponse = response.body();
+                    radicalEntities.addAll(generalResponse.getData());
+                    setRecycleView(radicalEntities);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GeneralResponse<List<RadicalEntity>>> call, Throwable t) {
+                // Nothing to do yet
+            }
+        });
     }
 
 
