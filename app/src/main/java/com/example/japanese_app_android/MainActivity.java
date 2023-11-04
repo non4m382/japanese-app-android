@@ -59,4 +59,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("main_activity", "radical clicked");
         startActivity(intent);
     }
+
+    public void openProfileUpdateAcitivity(View view) {
+        Intent intent = new Intent(MainActivity.this, ProfileUpdateAcitivity.class);
+        Log.d("main_activity", "profile update clicked");
+        startActivity(intent);
+    }
 }
