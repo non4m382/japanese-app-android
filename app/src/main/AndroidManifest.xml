@@ -29,6 +29,8 @@
         <activity
             android:name=".RadicalActivity"
             android:exported="false"/>
+        <activity android:name=".KanjiActivity" />
+        <activity android:name=".VocabActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
