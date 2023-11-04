@@ -1,10 +1,6 @@
 package com.example.japanese_app_android;
 
-import static com.example.japanese_app_android.constant.CommonConstant.LOGGED;
-import static com.example.japanese_app_android.constant.CommonConstant.PROJECT_PREFERENCES;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,19 +8,19 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.japanese_app_android.util.SharedPref;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvNguPhapDetail1, tvNguPhapDetail2, tvNguPhapDetail3;
-
-    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-        sharedPreferences = getSharedPreferences(PROJECT_PREFERENCES, MODE_PRIVATE);
+        SharedPref.init(getApplicationContext());
 
-        if (!sharedPreferences.getBoolean(LOGGED, false)) {
+        if (!SharedPref.read(SharedPref.LOGGED, false)) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             finish();
