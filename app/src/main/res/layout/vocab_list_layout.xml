@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1,2,3,4,5">
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/tv_vocab_name"
+            android:layout_column="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_vocab_kanji"
+            android:layout_column="2"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_vocab_meaning"
+            android:layout_column="3"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_vocab_sound"
+            android:layout_column="4"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_vocab_example"
+            android:layout_column="5"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+
+    </TableRow>
+
+</TableLayout>
+
