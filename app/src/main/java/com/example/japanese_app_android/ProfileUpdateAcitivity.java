@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.japanese_app_android.util.SharedPref;
+
 import java.util.Calendar;
 
 public class ProfileUpdateAcitivity extends AppCompatActivity {
@@ -114,5 +116,21 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         Intent intent = new Intent(ProfileUpdateAcitivity.this, MainActivity.class);
         Log.d("profile_update_activity", "button back clicked: return home");
         startActivity(intent);
+    }
+
+    public void btnLogout_click(View view) {
+        Log.d("profile_update_activity", "button log out clicked");
+
+        SharedPref.init(getApplicationContext());
+        SharedPref.write(SharedPref.LOGGED, false);
+        SharedPref.write(SharedPref.TOKEN, "");
+
+        if (!SharedPref.read(SharedPref.LOGGED, false)
+                || SharedPref.read(SharedPref.TOKEN, "").isEmpty()) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            Log.d("profile_update_activity", "return login");
+            startActivity(intent);
+        }
+
     }
 }
