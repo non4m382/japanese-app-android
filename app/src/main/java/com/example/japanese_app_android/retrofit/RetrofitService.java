@@ -1,6 +1,8 @@
 package com.example.japanese_app_android.retrofit;
 
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
@@ -14,12 +16,15 @@ public class RetrofitService {
 
     private Retrofit retrofit;
 
-    public RetrofitService() {
+    private Context context;
+
+    public RetrofitService(Context context) {
+        this.context = context;
         initializeRetrofit();
     }
 
     private OkHttpClient createDefaultOkHttpClient() {
-        TokenInterceptor tokenInterceptor = new TokenInterceptor();
+        TokenInterceptor tokenInterceptor = new TokenInterceptor(context);
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient().newBuilder()
