@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,13 +14,6 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/logo" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,56 +26,74 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/nameInput"
+            android:id="@+id/register_firstNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/logo"
-            android:minHeight="48dp"
+            android:hint="Tên"
             android:layout_marginBottom="16dp"
-            android:hint="Họ và tên"
+            android:minHeight="20dp"
             android:paddingLeft="16dp" />
 
         <EditText
-            android:id="@+id/emailPhoneInput"
+            android:id="@+id/register_lastNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/nameInput"
+            android:layout_below="@id/register_firstNameInput"
+            android:hint="Họ"
             android:layout_marginBottom="16dp"
-            android:hint="Phone or Email"
-            android:minHeight="48dp"
+            android:minHeight="20dp"
             android:paddingLeft="16dp" />
 
         <EditText
-            android:id="@+id/passwordInput"
+            android:id="@+id/register_emailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/emailPhoneInput"
+            android:layout_below="@id/register_lastNameInput"
+            android:layout_marginBottom="16dp"
+            android:hint="Email"
+            android:minHeight="20dp"
+            android:paddingLeft="16dp" />
+
+        <EditText
+            android:id="@+id/register_passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/register_emailInput"
             android:layout_marginBottom="16dp"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
-            android:minHeight="48dp"
+            android:minHeight="20dp"
             android:paddingLeft="16dp" />
 
         <EditText
-            android:id="@+id/confirmPasswordInput"
+            android:id="@+id/register_confirmPasswordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/passwordInput"
+            android:layout_below="@id/register_passwordInput"
             android:layout_marginBottom="32dp"
             android:hint="Nhập lại mật khẩu"
             android:inputType="textPassword"
-            android:paddingLeft="16dp"
+            android:paddingLeft="20dp"
             android:minHeight="48dp"
             />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/confirmPasswordInput"
-            android:layout_marginBottom="16dp"
+            android:layout_below="@id/register_confirmPasswordInput"
+            android:layout_marginBottom="4dp"
             android:text="ĐĂNG KÝ"
             android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/registerError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:textColor="#F44336"
+            android:textSize="20sp" />
 
 
         <LinearLayout
@@ -98,16 +108,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:onClick="onLoginLinkClick"
             android:text="Đã có tài khoản? " android:minHeight="48dp"
             android:textSize="20sp" />
 
             <TextView
-            android:id="@+id/txtGoToRegister"
+            android:id="@+id/txtGoToLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:onClick="onLoginLinkClick"
             android:text="Đăng nhập"
             android:textColor="#0000FF"
             android:textSize="20sp" android:minHeight="48dp"/>
