@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            RetrofitService retrofitService = new RetrofitService();
+            RetrofitService retrofitService = new RetrofitService(getApplicationContext());
             AuthenApi radicalApi = retrofitService.getRetrofit().create(AuthenApi.class);
             RegisterRequest request = new RegisterRequest(email, pass, firstName, lastName);
 
