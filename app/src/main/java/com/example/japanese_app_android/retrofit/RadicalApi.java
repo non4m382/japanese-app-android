@@ -10,7 +10,9 @@ import retrofit2.http.GET;
 
 public interface RadicalApi {
 
-    @GET("/jla-be/v1/user/radical/list_radical_category")
+    @GET("/jla-be/v1/user/radical/list_category")
     Call<GeneralResponse<List<CategoryEntity>>> getAllCategories();
+
+
 
 }

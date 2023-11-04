@@ -18,6 +18,7 @@ import com.example.japanese_app_android.model.request.LoginRequest;
 import com.example.japanese_app_android.model.response.GeneralResponse;
 import com.example.japanese_app_android.retrofit.AuthenApi;
 import com.example.japanese_app_android.retrofit.RetrofitService;
+import com.example.japanese_app_android.util.SharedPref;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,8 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
     Button login;
 
-    SharedPreferences sharedPreferences;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.register_emailInput);
         editTextPass = findViewById(R.id.register_passwordInput);
         login = findViewById(R.id.registerButton);
-        sharedPreferences = getSharedPreferences(PROJECT_PREFERENCES, MODE_PRIVATE);
         loginError = findViewById(R.id.loginError);
+        SharedPref.init(getApplicationContext());
 
-        if (sharedPreferences.getBoolean(LOGGED, false)) {
+        if (SharedPref.read(SharedPref.LOGGED, false)) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
@@ -60,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
              */
             fastLogin(request);
 
-            RetrofitService retrofitService = new RetrofitService();
+            RetrofitService retrofitService = new RetrofitService(getApplicationContext());
             AuthenApi radicalApi = retrofitService.getRetrofit().create(AuthenApi.class);
             radicalApi.login(request).enqueue(new Callback<GeneralResponse<String>>() {
                 @Override
@@ -68,10 +67,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         GeneralResponse<String> generalResponse = response.body();
                         String token = generalResponse.getData();
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putBoolean(LOGGED, true);
-                        editor.putString(TOKEN, token);
-                        editor.apply();
+                        SharedPref.init(getApplicationContext());
+                        SharedPref.write(SharedPref.LOGGED, true);
+                        SharedPref.write(SharedPref.TOKEN, token);
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -86,8 +84,6 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("login", "failed");
                 }
             });
-
-
         });
 
         txtRegisterNow = findViewById(R.id.txtGoToRegister);
@@ -102,9 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void fastLogin(LoginRequest loginRequest) {
         if (loginRequest.getMail().equals("user@gmail.com") && loginRequest.getPassword().equals("123")) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(LOGGED, true);
-            editor.apply();
+            SharedPref.write(SharedPref.LOGGED, true);
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);

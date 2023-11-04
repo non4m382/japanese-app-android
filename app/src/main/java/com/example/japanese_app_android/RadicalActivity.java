@@ -17,9 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.japanese_app_android.adapter.RadicalAdapter;
 import com.example.japanese_app_android.model.CategoryEntity;
 import com.example.japanese_app_android.model.RadicalEntity;
+import com.example.japanese_app_android.model.response.GeneralResponse;
+import com.example.japanese_app_android.retrofit.RadicalApi;
+import com.example.japanese_app_android.retrofit.RetrofitService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RadicalActivity extends AppCompatActivity {
 
@@ -29,6 +36,10 @@ public class RadicalActivity extends AppCompatActivity {
 
     private Spinner spinner;
 
+    RetrofitService retrofitService;
+
+    RadicalApi radicalApi;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,21 +47,18 @@ public class RadicalActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rv_radical);
         spinner = findViewById(R.id.category_spinner);
+        retrofitService = new RetrofitService(getApplicationContext());
+        radicalApi = retrofitService.getRetrofit().create(RadicalApi.class);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        setSpinner();
+        getCategoryList();
         setRecycleView();
     }
 
-    private void setSpinner() {
-        List<CategoryEntity> categoryEntities = new ArrayList<>();
-        categoryEntities.add(new CategoryEntity(1, "Bộ thủ 1 nét", 1));
-        categoryEntities.add(new CategoryEntity(2, "Bộ thủ 2 nét", 1));
-        categoryEntities.add(new CategoryEntity(3, "Bộ thủ 3 nét", 1));
-
+    private void setSpinner(List<CategoryEntity> categoryEntities) {
         ArrayAdapter<CategoryEntity> categoryEntityArrayAdapter =
                 new ArrayAdapter<>(this,
                         com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
@@ -78,7 +86,7 @@ public class RadicalActivity extends AppCompatActivity {
 
         String userData = "Name: " + name + "\nId: " + id;
 
-        Toast.makeText(this, userData, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), userData, Toast.LENGTH_SHORT).show();
     }
 
     private void setRecycleView() {
@@ -110,4 +118,28 @@ public class RadicalActivity extends AppCompatActivity {
         Intent intent = new Intent(RadicalActivity.this, MainActivity.class);
         startActivity(intent);
     }
+
+    private void getCategoryList() {
+        List<CategoryEntity> categoryEntities = new ArrayList<>();
+        radicalApi.getAllCategories().enqueue(new Callback<GeneralResponse<List<CategoryEntity>>>() {
+            @Override
+            public void onResponse(Call<GeneralResponse<List<CategoryEntity>>> call, Response<GeneralResponse<List<CategoryEntity>>> response) {
+                if (response.isSuccessful()) {
+                    GeneralResponse<List<CategoryEntity>> generalResponse = response.body();
+                    categoryEntities.addAll(generalResponse.getData());
+                    setSpinner(categoryEntities);
+                } else {
+                    Log.d("get radical category", "failed");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GeneralResponse<List<CategoryEntity>>> call, Throwable t) {
+                Log.d("login", "failed");
+            }
+        });
+
+    }
+
+
 }
