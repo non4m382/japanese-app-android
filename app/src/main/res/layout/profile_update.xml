@@ -153,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
                 android:text="Hủy"
+                android:onClick="btnBack_click"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>

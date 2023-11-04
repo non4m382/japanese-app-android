@@ -1,7 +1,9 @@
 package com.example.japanese_app_android;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -106,5 +108,11 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
 
     public void openDatePicker(View view) {
         datePickerDialog.show();
+    }
+
+    public void btnBack_click(View view) {
+        Intent intent = new Intent(ProfileUpdateAcitivity.this, MainActivity.class);
+        Log.d("profile_update_activity", "button back clicked: return home");
+        startActivity(intent);
     }
 }
