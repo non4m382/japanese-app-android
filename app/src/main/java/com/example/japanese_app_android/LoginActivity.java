@@ -39,9 +39,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        editTextEmail = findViewById(R.id.emailPhoneInput);
-        editTextPass = findViewById(R.id.passwordInput);
-        login = findViewById(R.id.loginButton);
+        editTextEmail = findViewById(R.id.register_emailInput);
+        editTextPass = findViewById(R.id.register_passwordInput);
+        login = findViewById(R.id.registerButton);
         sharedPreferences = getSharedPreferences(PROJECT_PREFERENCES, MODE_PRIVATE);
         loginError = findViewById(R.id.loginError);
 

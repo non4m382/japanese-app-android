@@ -1,6 +1,7 @@
 package com.example.japanese_app_android.retrofit;
 
 import com.example.japanese_app_android.model.request.LoginRequest;
+import com.example.japanese_app_android.model.request.RegisterRequest;
 import com.example.japanese_app_android.model.response.GeneralResponse;
 
 import retrofit2.Call;
@@ -12,5 +13,7 @@ public interface AuthenApi {
     @POST("/jla-be/v1/public/login")
     Call<GeneralResponse<String>> login(@Body LoginRequest loginRequest);
 
+    @POST("/jla-be/v1/public/register")
+    Call<GeneralResponse<Object>> register(@Body RegisterRequest registerRequest);
 
 }

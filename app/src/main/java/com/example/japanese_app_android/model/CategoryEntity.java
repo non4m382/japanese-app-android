@@ -7,6 +7,8 @@ public class CategoryEntity {
 
     private Integer status;
 
+//    imageButton
+
     public CategoryEntity(Integer id, String name, Integer status) {
         this.id = id;
         this.name = name;
