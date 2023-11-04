@@ -63,4 +63,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("main_activity", "radical clicked");
         startActivity(intent);
     }
+
+    public void openAlphabetActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, AlphabetActivity.class);
+        Log.d("main_activity", "alphabet clicked");
+        startActivity(intent);
+    }
 }

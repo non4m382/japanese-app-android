@@ -13,7 +13,7 @@
         tools:ignore="MissingConstraints">
 
         <Spinner
-            android:id="@+id/category_spinner"
+            android:id="@+id/alphabet_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -45,99 +45,127 @@
 
     </RelativeLayout>
 
-    <TableLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_alphabet"
         android:layout_width="409dp"
         android:layout_height="629dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
-        android:background="@drawable/bg_table"
-        android:padding="20dp"
-        android:stretchColumns="*"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints" />
 
-        <TableRow android:background="@drawable/bg_table">
+    <!--    <GridView-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="629dp"-->
+<!--        android:numColumns="5"-->
+<!--        android:background="@color/white"-->
+<!--        android:verticalSpacing="5dp"-->
+<!--        tools:layout_editor_absoluteX="1dp"-->
+<!--        tools:layout_editor_absoluteY="101dp"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="あ"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+    <!--    <androidx.gridlayout.widget.GridLayout-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="629dp"-->
+<!--        tools:layout_editor_absoluteX="1dp"-->
+<!--        tools:layout_editor_absoluteY="101dp">-->
 
-            <TextView
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="い"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+<!--    </androidx.gridlayout.widget.GridLayout>-->
 
-            <TextView
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="う"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+    <!--    <TableLayout-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="629dp"-->
+<!--        android:layout_marginTop="1dp"-->
+<!--        android:background="@drawable/bg_table"-->
+<!--        android:padding="20dp"-->
+<!--        android:stretchColumns="*"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"-->
+<!--        tools:ignore="MissingConstraints">-->
 
-            <TextView
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="え"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+<!--        <TableRow android:background="@drawable/bg_table">-->
 
-            <TextView
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="お"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="あ"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
 
-        </TableRow>
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="い"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
 
-        <TableRow android:background="@drawable/bg_table">
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="う"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="か"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="え"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="き"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="お"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="く"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+<!--        </TableRow>-->
 
-            <TextView
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="け"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+<!--        <TableRow android:background="@drawable/bg_table">-->
 
-            <TextView
-                android:background="@drawable/bg_table"
-                android:gravity="center"
-                android:text="こ"
-                android:textSize="50dp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="か"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
 
-        </TableRow>
-    </TableLayout>
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="き"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="く"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="け"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_table"-->
+<!--                android:gravity="center"-->
+<!--                android:text="こ"-->
+<!--                android:textSize="50dp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--        </TableRow>-->
+<!--    </TableLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
