@@ -6,11 +6,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SharedPref {
-    public static final String NAME = "NAME";
-    public static final String AGE = "AGE";
-    public static final String IS_SELECT = "IS_SELECT";
+
     public static final String LOGGED = "logged";
     public static final String TOKEN = "token";
+    public static final String ID = "id";
+    public static final String FIRST_NAME = "first_name";
+    public static final String LAST_NAME = "last_name";
+    public static final String MAIL = "mail";
+    public static final String PHONE = "phone";
+    public static final String DOB = "dob";
+    public static final String AVATAR = "avatar";
 
     private static SharedPreferences mSharedPref;
 
@@ -30,7 +35,7 @@ public class SharedPref {
     public static void write(String key, String value) {
         SharedPreferences.Editor prefsEditor = mSharedPref.edit();
         prefsEditor.putString(key, value);
-        prefsEditor.commit();
+        prefsEditor.apply();
     }
 
     public static boolean read(String key, boolean defValue) {
@@ -40,7 +45,7 @@ public class SharedPref {
     public static void write(String key, boolean value) {
         SharedPreferences.Editor prefsEditor = mSharedPref.edit();
         prefsEditor.putBoolean(key, value);
-        prefsEditor.commit();
+        prefsEditor.apply();
     }
 
     public static Integer read(String key, int defValue) {
@@ -49,6 +54,6 @@ public class SharedPref {
 
     public static void write(String key, Integer value) {
         SharedPreferences.Editor prefsEditor = mSharedPref.edit();
-        prefsEditor.putInt(key, value).commit();
+        prefsEditor.putInt(key, value).apply();
     }
 }
