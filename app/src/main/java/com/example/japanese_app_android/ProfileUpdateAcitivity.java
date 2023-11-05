@@ -159,11 +159,11 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         String txtDob = String.valueOf(btnDob.getText());
         String avatar = SharedPref.read(SharedPref.AVATAR, "https://bom.so/IHAaqt");
 
-        String[] strDob = txtDob.split(" ");
-        String monthDob = strDob[1];
-        String dayDob = strDob[2];
-        String yearDob = strDob[strDob.length - 1];
-        String dob = yearDob + "-" + getMonthFormat(monthDob) + "-" + dayDob;
+        String[] strDob = txtDob.split("/");
+        String dayDob = strDob[0].trim();
+        String monthDob = strDob[1].trim();
+        String yearDob = strDob[2].trim();
+        String dob = yearDob + "-" + monthDob + "-" + dayDob;
 
         if (id == -1) {
             Toast.makeText(getApplicationContext(), "Không thể cập nhật!",
