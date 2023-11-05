@@ -3,7 +3,6 @@ package com.example.japanese_app_android;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -51,6 +50,13 @@ public class KanjiLessonActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openKanjiList(View view) {
+        // Truyền thông tin bài học vào Activity mới
+        Intent intent = new Intent(KanjiLessonActivity.this, KanjiActivity.class);
+        intent.putExtra("lessonId", 1);
+        startActivity(intent);
+    }
+
     private void getRadicalByCategory(Integer id) {
         List<LessonEntity> lessonEntities = new ArrayList<>();
         lessonApi.getLessonByBookId(id).enqueue(new Callback<GeneralResponse<List<LessonEntity>>>() {
@@ -73,12 +79,4 @@ public class KanjiLessonActivity extends AppCompatActivity {
         });
     }
 
-    public void openKanjiList(View view) {
-
-
-        // Truyền thông tin bài học vào Activity mới
-        Intent intent = new Intent(KanjiLessonActivity.this, KanjiActivity.class);
-        intent.putExtra("lessonId", 1);
-        startActivity(intent);
-    }
 }

@@ -2,13 +2,8 @@ package com.example.japanese_app_android;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,11 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.japanese_app_android.adapter.KanjiAdapter;
-import com.example.japanese_app_android.adapter.RadicalAdapter;
-import com.example.japanese_app_android.model.CategoryEntity;
 import com.example.japanese_app_android.model.KanjiEntity;
 import com.example.japanese_app_android.model.LessonEntity;
-import com.example.japanese_app_android.model.RadicalEntity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -75,4 +75,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("main_activity", "alphabet clicked");
         startActivity(intent);
     }
+    public void openTermActivity(View view){
+        Intent intent = new Intent(MainActivity.this, TermActivity.class);
+        startActivity(intent);
+    }
 }

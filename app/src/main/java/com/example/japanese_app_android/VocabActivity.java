@@ -9,9 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.japanese_app_android.adapter.KanjiAdapter;
 import com.example.japanese_app_android.adapter.VocabAdapter;
-import com.example.japanese_app_android.model.KanjiEntity;
 import com.example.japanese_app_android.model.VocabularyEntity;
 
 import java.util.ArrayList;
@@ -53,7 +51,7 @@ public class VocabActivity extends AppCompatActivity {
     }
 
     public void openHomepage(View view) {
-        Intent intent = new Intent(VocabActivity.this, VocabLessonActivity.class);
+        Intent intent = new Intent(VocabActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }
