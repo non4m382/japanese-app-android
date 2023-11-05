@@ -13,11 +13,11 @@ import com.example.japanese_app_android.model.LessonEntity;
 
 import java.util.List;
 
-public class TuvungLessonAdapter extends RecyclerView.Adapter<TuvungLessonAdapter.ViewHolder> {
+public class VocabLessonAdapter extends RecyclerView.Adapter<VocabLessonAdapter.ViewHolder> {
     private List<LessonEntity> lessonList;
     private Context context;
 
-    public TuvungLessonAdapter(Context context, List<LessonEntity> lessonList) {
+    public VocabLessonAdapter(Context context, List<LessonEntity> lessonList) {
         this.context = context;
         this.lessonList = lessonList;
     }
