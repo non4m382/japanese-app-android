@@ -60,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openProfileUpdateAcitivity(View view) {
+        Intent intent = new Intent(MainActivity.this, ProfileUpdateAcitivity.class);
+        Log.d("main_activity", "profile update clicked");
+        startActivity(intent);
+    }
+
     public void openAlphabetActivity(View view) {
         Intent intent = new Intent(MainActivity.this, AlphabetActivity.class);
         Log.d("main_activity", "alphabet clicked");
