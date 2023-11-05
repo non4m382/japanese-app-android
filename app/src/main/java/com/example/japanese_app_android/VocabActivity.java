@@ -51,7 +51,7 @@ public class VocabActivity extends AppCompatActivity {
     }
 
     public void openHomepage(View view) {
-        Intent intent = new Intent(VocabActivity.this, MainActivity.class);
+        Intent intent = new Intent(VocabActivity.this, VocabLessonActivity.class);
         startActivity(intent);
     }
 }
