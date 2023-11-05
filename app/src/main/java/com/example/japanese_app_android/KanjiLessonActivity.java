@@ -22,10 +22,12 @@ import retrofit2.Response;
 public class KanjiLessonActivity extends AppCompatActivity {
 
     RetrofitService retrofitService;
+
     LessonApi lessonApi;
 
     RecyclerView recyclerView;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kanji_lesson_activity); // Gắn layout XML vào Activity
@@ -33,6 +35,8 @@ public class KanjiLessonActivity extends AppCompatActivity {
         lessonApi = retrofitService.getRetrofit().create(LessonApi.class);
 
         recyclerView = findViewById(R.id.recyclerView); // Khởi tạo RecyclerView
+
+        // TODO chuyền bookId khi bấm chọn sách từ main homepage
         Integer bookId = 1;
         getRadicalByCategory(bookId);
 

@@ -6,37 +6,62 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.japanese_app_android.adapter.TuvungLessonAdapter;
+import com.example.japanese_app_android.adapter.VocabLessonAdapter;
 import com.example.japanese_app_android.model.LessonEntity;
+import com.example.japanese_app_android.model.response.GeneralResponse;
+import com.example.japanese_app_android.retrofit.LessonApi;
+import com.example.japanese_app_android.retrofit.RetrofitService;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class VocabLessonActivity extends AppCompatActivity {
-    private List<LessonEntity> generateKanjiLessons() {
-        List<LessonEntity> lessons = new ArrayList<>();
-        lessons.add(new LessonEntity(1, "Bài 1", "Nội dung bài 1"));
-        lessons.add(new LessonEntity(2, "Bài 2", "Nội dung bài 2"));
-        lessons.add(new LessonEntity(3, "Bài 3", "Nội dung bài 3"));
-        lessons.add(new LessonEntity(4, "Bài 4", "Nội dung bài 4"));
-        lessons.add(new LessonEntity(5, "Bài 5", "Nội dung bài 5"));
 
-        return lessons;
-    }
+    RetrofitService retrofitService;
 
+    LessonApi lessonApi;
+
+    RecyclerView recyclerView;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tuvung_lesson_activity); // Gắn layout XML vào Activity
+        retrofitService = new RetrofitService(getApplicationContext());
+        lessonApi = retrofitService.getRetrofit().create(LessonApi.class);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView); // Khởi tạo RecyclerView
-        List<LessonEntity> lessons = generateKanjiLessons(); // Lấy danh sách bài học
+        recyclerView = findViewById(R.id.recyclerView); // Khởi tạo RecyclerView
 
-        // Khởi tạo Adapter và thiết lập cho RecyclerView
-        TuvungLessonAdapter adapter = new TuvungLessonAdapter(this, lessons);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3)); // Số cột trong lưới (ở đây là 2)
+        // TODO chuyền bookId khi bấm chọn sách từ main homepage
+        Integer bookId = 1;
+        getRadicalByCategory(bookId);
 
-        // Xử lý sự kiện khi người dùng nhấp vào một mục danh sách (nếu cần)
+    }
+
+    private void getRadicalByCategory(Integer id) {
+        List<LessonEntity> lessonEntities = new ArrayList<>();
+        lessonApi.getLessonByBookId(id).enqueue(new Callback<GeneralResponse<List<LessonEntity>>>() {
+            @Override
+            public void onResponse(Call<GeneralResponse<List<LessonEntity>>> call, Response<GeneralResponse<List<LessonEntity>>> response) {
+                if (response.isSuccessful()) {
+                    GeneralResponse<List<LessonEntity>> generalResponse = response.body();
+                    lessonEntities.addAll(generalResponse.getData());
+
+                    VocabLessonAdapter adapter = new VocabLessonAdapter(getApplicationContext(), lessonEntities);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3)); // Số cột trong lưới (ở đây là 2)
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GeneralResponse<List<LessonEntity>>> call, Throwable t) {
+                // Nothing to do yet
+            }
+        });
     }
 
 }
