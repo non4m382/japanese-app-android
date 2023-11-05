@@ -38,6 +38,7 @@ public class KanjiLessonAdapter extends RecyclerView.Adapter<KanjiLessonAdapter.
                 // Set the lesson name and content
                 holder.tvName.setText(lesson.getName());
                 holder.tvContent.setText(lesson.getContent());
+                holder.tvId.setText(lesson.getId().toString());
             }
         }
     }
@@ -51,12 +52,14 @@ public class KanjiLessonAdapter extends RecyclerView.Adapter<KanjiLessonAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvName;
         public TextView tvContent;
+        public TextView tvId;
 
         public ViewHolder(View view) {
             super(view);
             // Initialize the TextViews
             tvName = view.findViewById(R.id.idNameKanJi);
             tvContent = view.findViewById(R.id.idContentKanJi);
+            tvId = view.findViewById(R.id.lessonId);
         }
     }
 }

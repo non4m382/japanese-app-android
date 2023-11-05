@@ -59,4 +59,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("main_activity", "radical clicked");
         startActivity(intent);
     }
+    public void openTermActivity(View view){
+        Intent intent = new Intent(MainActivity.this, TermActivity.class);
+        startActivity(intent);
+    }
 }

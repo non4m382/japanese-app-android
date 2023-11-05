@@ -98,7 +98,8 @@
                     <ImageView
                         android:layout_width="100sp"
                         android:layout_height="100sp"
-                        android:src="@drawable/sach1" />
+                        android:src="@drawable/sach1"
+                        android:onClick="openTermActivity"/>
 
                     <TextView
                         android:layout_width="match_parent"

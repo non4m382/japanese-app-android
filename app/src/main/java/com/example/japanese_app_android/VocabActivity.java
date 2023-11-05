@@ -47,13 +47,13 @@ public class VocabActivity extends AppCompatActivity {
 
     private List<VocabularyEntity> getList() {
         List<VocabularyEntity> radicalList = new ArrayList<>();
-        radicalList.add(new VocabularyEntity(1,"私","tôi","わたし","watashi","シ"));
-        radicalList.add(new VocabularyEntity(2,"年","Năm","とし","toshi","年をとる"));
+        radicalList.add(new VocabularyEntity(1, 1,"私","tôi","わたし","watashi","シ"));
+        radicalList.add(new VocabularyEntity(2, 1,"年","Năm","とし","toshi","年をとる"));
         return radicalList;
     }
 
     public void openHomepage(View view) {
-        Intent intent = new Intent(VocabActivity.this, MainActivity.class);
+        Intent intent = new Intent(VocabActivity.this, TuvungLessonActivity.class);
         startActivity(intent);
     }
 }

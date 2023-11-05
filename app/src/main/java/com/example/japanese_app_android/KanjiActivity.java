@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.example.japanese_app_android.adapter.KanjiAdapter;
 import com.example.japanese_app_android.adapter.RadicalAdapter;
 import com.example.japanese_app_android.model.CategoryEntity;
 import com.example.japanese_app_android.model.KanjiEntity;
+import com.example.japanese_app_android.model.KanjiLesson;
 import com.example.japanese_app_android.model.RadicalEntity;
 
 import java.util.ArrayList;
@@ -28,12 +30,17 @@ public class KanjiActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     KanjiAdapter adapter;
+    String lessonId;
+    KanjiLesson kanjiLesson;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kanji_list_activity);
-
+        lessonId = getIntent().getStringExtra("lessonId");
+        kanjiLesson = findKanjiLessonById(lessonId);
+        TextView textViewTitle = findViewById(R.id.textViewTitle);
+        textViewTitle.setText(kanjiLesson.getName() + ": " + kanjiLesson.getContent());
         recyclerView = findViewById(R.id.rv_kanji);
     }
 
@@ -53,13 +60,17 @@ public class KanjiActivity extends AppCompatActivity {
 
     private List<KanjiEntity> getList() {
         List<KanjiEntity> radicalList = new ArrayList<>();
-        radicalList.add(new KanjiEntity(1,"Tư","私","cá nhân","わたし","シ"));
-        radicalList.add(new KanjiEntity(2,"Tuế","歳","tuổi","とし","セイ"));
+        radicalList.add(new KanjiEntity(1, 1, "Tư", "私", "cá nhân", "わたし", "シ"));
+        radicalList.add(new KanjiEntity(2, 1, "Tuế", "歳", "tuổi", "とし", "セイ"));
         return radicalList;
     }
 
     public void openHomepage(View view) {
-        Intent intent = new Intent(KanjiActivity.this, MainActivity.class);
+        Intent intent = new Intent(KanjiActivity.this, KanjiLessonActivity.class);
         startActivity(intent);
+    }
+
+    public KanjiLesson findKanjiLessonById(String lessonId) {
+        return new KanjiLesson(1, "Bài bla bla", "Cơ bản");
     }
 }

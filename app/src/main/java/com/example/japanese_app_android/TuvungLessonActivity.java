@@ -1,6 +1,8 @@
 package com.example.japanese_app_android;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -37,5 +39,16 @@ public class TuvungLessonActivity extends AppCompatActivity {
 
         // Xử lý sự kiện khi người dùng nhấp vào một mục danh sách (nếu cần)
     }
+    public void backToTerm(View view) {
+        Intent intent = new Intent(TuvungLessonActivity.this, TermActivity.class);
+        startActivity(intent);
+    }
+    public void openVocabList (View view){
 
+
+        // Truyền thông tin bài học vào Activity mới
+        Intent intent = new Intent(TuvungLessonActivity.this, VocabActivity.class);
+        intent.putExtra("lessonId", 1);
+        startActivity(intent);
+    }
 }
