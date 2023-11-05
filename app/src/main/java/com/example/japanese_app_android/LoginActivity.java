@@ -1,11 +1,6 @@
 package com.example.japanese_app_android;
 
-import static com.example.japanese_app_android.constant.CommonConstant.LOGGED;
-import static com.example.japanese_app_android.constant.CommonConstant.PROJECT_PREFERENCES;
-import static com.example.japanese_app_android.constant.CommonConstant.TOKEN;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -16,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.japanese_app_android.model.request.LoginRequest;
 import com.example.japanese_app_android.model.response.GeneralResponse;
+import com.example.japanese_app_android.model.response.LoginResponseDto;
 import com.example.japanese_app_android.retrofit.AuthenApi;
 import com.example.japanese_app_android.retrofit.RetrofitService;
 import com.example.japanese_app_android.util.SharedPref;
@@ -61,15 +57,22 @@ public class LoginActivity extends AppCompatActivity {
 
             RetrofitService retrofitService = new RetrofitService(getApplicationContext());
             AuthenApi radicalApi = retrofitService.getRetrofit().create(AuthenApi.class);
-            radicalApi.login(request).enqueue(new Callback<GeneralResponse<String>>() {
+            radicalApi.login(request).enqueue(new Callback<GeneralResponse<LoginResponseDto>>() {
                 @Override
-                public void onResponse(Call<GeneralResponse<String>> call, Response<GeneralResponse<String>> response) {
+                public void onResponse(Call<GeneralResponse<LoginResponseDto>> call, Response<GeneralResponse<LoginResponseDto>> response) {
                     if (response.isSuccessful()) {
-                        GeneralResponse<String> generalResponse = response.body();
-                        String token = generalResponse.getData();
+                        GeneralResponse<LoginResponseDto> generalResponse = response.body();
+                        LoginResponseDto loginResponse = generalResponse.getData();
                         SharedPref.init(getApplicationContext());
                         SharedPref.write(SharedPref.LOGGED, true);
-                        SharedPref.write(SharedPref.TOKEN, token);
+                        SharedPref.write(SharedPref.TOKEN, loginResponse.getToken());
+                        SharedPref.write(SharedPref.ID, loginResponse.getId());
+                        SharedPref.write(SharedPref.FIRST_NAME, loginResponse.getFirstName());
+                        SharedPref.write(SharedPref.LAST_NAME, loginResponse.getLastName());
+                        SharedPref.write(SharedPref.MAIL, loginResponse.getMail());
+                        SharedPref.write(SharedPref.DOB, loginResponse.getDob().toString());
+                        SharedPref.write(SharedPref.PHONE, loginResponse.getPhone());
+                        SharedPref.write(SharedPref.AVATAR, loginResponse.getAvatar());
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -80,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<GeneralResponse<String>> call, Throwable t) {
+                public void onFailure(Call<GeneralResponse<LoginResponseDto>> call, Throwable t) {
                     Log.d("login", "failed");
                 }
             });
