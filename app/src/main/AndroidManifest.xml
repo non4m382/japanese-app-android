@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -18,22 +18,37 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AlphabetDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlphabetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileUpdateAcitivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlphabetActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".NguPhapMoiNgayDetail"
             android:exported="false" />
         <activity
             android:name=".RadicalActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity android:name=".KanjiActivity" />
         <activity android:name=".KanjiLessonActivity" />
         <activity android:name=".VocabActivity" />
         <activity android:name=".TermActivity" />
         <activity android:name=".TuvungLessonActivity" />
+        <activity
+            android:name=".KanjiLessonActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -43,7 +58,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

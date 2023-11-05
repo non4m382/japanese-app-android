@@ -42,9 +42,11 @@
                     android:textStyle="bold" />
 
                 <Button
+                    android:id="@+id/btnUpdateProfile"
+                    style="@style/button_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/button_style"
+                    android:onClick="openProfileUpdateAcitivity"
                     android:text="Chỉnh sửa" />
             </LinearLayout>
 
@@ -213,7 +215,8 @@
                     <ImageButton
                         android:layout_width="100sp"
                         android:layout_height="100sp"
-                        android:src="@drawable/ic_vocabulary" />
+                        android:src="@drawable/ic_vocabulary"
+                        android:onClick="openAlphabetActivity"/>
 
                     <TextView
                         android:layout_width="match_parent"

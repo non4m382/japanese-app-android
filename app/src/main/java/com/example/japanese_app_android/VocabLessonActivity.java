@@ -1,14 +1,12 @@
 package com.example.japanese_app_android;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.japanese_app_android.adapter.KanjiLessonAdapter;
+import com.example.japanese_app_android.adapter.VocabLessonAdapter;
 import com.example.japanese_app_android.model.LessonEntity;
 import com.example.japanese_app_android.model.response.GeneralResponse;
 import com.example.japanese_app_android.retrofit.LessonApi;
@@ -21,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class KanjiLessonActivity extends AppCompatActivity {
+public class VocabLessonActivity extends AppCompatActivity {
 
     RetrofitService retrofitService;
 
@@ -32,7 +30,7 @@ public class KanjiLessonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kanji_lesson_activity); // Gắn layout XML vào Activity
+        setContentView(R.layout.tuvung_lesson_activity); // Gắn layout XML vào Activity
         retrofitService = new RetrofitService(getApplicationContext());
         lessonApi = retrofitService.getRetrofit().create(LessonApi.class);
 
@@ -42,13 +40,7 @@ public class KanjiLessonActivity extends AppCompatActivity {
         Integer bookId = 1;
         getRadicalByCategory(bookId);
 
-        // Xử lý sự kiện khi người dùng nhấp vào một mục danh sách (nếu cần)
     }
-    public void backToTerm(View view) {
-        Intent intent = new Intent(KanjiLessonActivity.this, TermActivity.class);
-        startActivity(intent);
-    }
-    public void openKanjiList (View view){
 
     private void getRadicalByCategory(Integer id) {
         List<LessonEntity> lessonEntities = new ArrayList<>();
@@ -59,7 +51,7 @@ public class KanjiLessonActivity extends AppCompatActivity {
                     GeneralResponse<List<LessonEntity>> generalResponse = response.body();
                     lessonEntities.addAll(generalResponse.getData());
 
-                    KanjiLessonAdapter adapter = new KanjiLessonAdapter(getApplicationContext(), lessonEntities);
+                    VocabLessonAdapter adapter = new VocabLessonAdapter(getApplicationContext(), lessonEntities);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3)); // Số cột trong lưới (ở đây là 2)
                 }
@@ -72,10 +64,4 @@ public class KanjiLessonActivity extends AppCompatActivity {
         });
     }
 
-
-        // Truyền thông tin bài học vào Activity mới
-        Intent intent = new Intent(KanjiLessonActivity.this, KanjiActivity.class);
-        intent.putExtra("lessonId", 1);
-        startActivity(intent);
-    }
 }

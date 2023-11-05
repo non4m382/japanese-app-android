@@ -1,15 +1,17 @@
 package com.example.japanese_app_android.model;
 
-public class KanjiLesson {
+public class LessonEntity {
     private Integer id;
     private String name;
     private String content;
-    public KanjiLesson (Integer id, String name,String content){
-        this.id=id;
-        this.name=name;
-        this.content=content;
+
+    public LessonEntity(Integer id, String name, String content) {
+        this.id = id;
+        this.name = name;
+        this.content = content;
     }
-    public KanjiLesson(){
+
+    public LessonEntity() {
 
     }
 

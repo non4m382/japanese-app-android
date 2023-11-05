@@ -4,21 +4,20 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.japanese_app_android.R;
-import com.example.japanese_app_android.model.KanjiLesson;
+import com.example.japanese_app_android.model.LessonEntity;
 
 import java.util.List;
 
 public class KanjiLessonAdapter extends RecyclerView.Adapter<KanjiLessonAdapter.ViewHolder> {
-    private List<KanjiLesson> lessonList;
+    private List<LessonEntity> lessonList;
     private Context context;
 
-    public KanjiLessonAdapter(Context context, List<KanjiLesson> lessonList) {
+    public KanjiLessonAdapter(Context context, List<LessonEntity> lessonList) {
         this.context = context;
         this.lessonList = lessonList;
     }
@@ -33,7 +32,7 @@ public class KanjiLessonAdapter extends RecyclerView.Adapter<KanjiLessonAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (lessonList != null && position < lessonList.size()) {
-            KanjiLesson lesson = lessonList.get(position);
+            LessonEntity lesson = lessonList.get(position);
             if (lesson != null) {
                 // Set the lesson name and content
                 holder.tvName.setText(lesson.getName());
