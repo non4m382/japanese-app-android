@@ -19,7 +19,7 @@ import com.example.japanese_app_android.adapter.KanjiAdapter;
 import com.example.japanese_app_android.adapter.RadicalAdapter;
 import com.example.japanese_app_android.model.CategoryEntity;
 import com.example.japanese_app_android.model.KanjiEntity;
-import com.example.japanese_app_android.model.KanjiLesson;
+import com.example.japanese_app_android.model.LessonEntity;
 import com.example.japanese_app_android.model.RadicalEntity;
 
 import java.util.ArrayList;
@@ -31,16 +31,16 @@ public class KanjiActivity extends AppCompatActivity {
 
     KanjiAdapter adapter;
     String lessonId;
-    KanjiLesson kanjiLesson;
+    LessonEntity LessonEntity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kanji_list_activity);
         lessonId = getIntent().getStringExtra("lessonId");
-        kanjiLesson = findKanjiLessonById(lessonId);
+        LessonEntity = findLessonEntityById(lessonId);
         TextView textViewTitle = findViewById(R.id.textViewTitle);
-        textViewTitle.setText(kanjiLesson.getName() + ": " + kanjiLesson.getContent());
+        textViewTitle.setText(LessonEntity.getName() + ": " + LessonEntity.getContent());
         recyclerView = findViewById(R.id.rv_kanji);
     }
 
@@ -70,7 +70,7 @@ public class KanjiActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public KanjiLesson findKanjiLessonById(String lessonId) {
-        return new KanjiLesson(1, "Bài bla bla", "Cơ bản");
+    public LessonEntity findLessonEntityById(String lessonId) {
+        return new LessonEntity(1, "Bài bla bla", "Cơ bản");
     }
 }

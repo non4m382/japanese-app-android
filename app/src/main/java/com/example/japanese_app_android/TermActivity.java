@@ -23,7 +23,7 @@ public class TermActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void openVocabLesson(View view) {
-        Intent intent = new Intent(TermActivity.this, TuvungLessonActivity.class);
+        Intent intent = new Intent(TermActivity.this, VocabLessonActivity.class);
         startActivity(intent);
     }
 }
