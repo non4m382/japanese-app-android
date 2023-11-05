@@ -2,7 +2,6 @@ package com.example.japanese_app_android;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,20 +10,33 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.japanese_app_android.model.request.AccountUpdateRequest;
+import com.example.japanese_app_android.model.response.GeneralResponse;
+import com.example.japanese_app_android.retrofit.AccountApi;
+import com.example.japanese_app_android.retrofit.RetrofitService;
 import com.example.japanese_app_android.util.SharedPref;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileUpdateAcitivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
 
     private Button btnDob, btnSave, btnBack, btnLogout;
 
-    private EditText editLastName, editFirstName, editMail, editPass, editPhone;
+    private EditText editLastName, editFirstName, editMail, editPhone;
 
     private TextView tvFullName;
 
@@ -34,10 +46,19 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_update);
-        initDatePicker();
         SharedPref.init(getApplicationContext());
+        //0. init Date of birth calendar
+        initDatePicker();
+        //1. findViewById
+        findViewById_Custom();
+        //2. setText
+        setText_Custom();
+        //3. setEnabled
+        editMail.setEnabled(false);
+    }
 
-        //------------------------------
+    //------------------------------
+    private void findViewById_Custom() {
         //1. findViewById
         //1.1. Button
         btnDob = findViewById(R.id.profileUpdate_btnDob);
@@ -49,7 +70,6 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         editMail = findViewById(R.id.profileUpdate_mailView);
         editLastName = findViewById(R.id.profileUpdate_lastNameInput);
         editFirstName = findViewById(R.id.profileUpdate_firstNameInput);
-//        editPass = findViewById(R.id.profileUpdate_passwordInput);
         editPhone = findViewById(R.id.profileUpdate_phoneInput);
 
         //1.3. TextView
@@ -57,8 +77,10 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
 
         //1.4. ImageView
         imgAvatar = findViewById(R.id.profileUpdate_imgAvatar);
+    }
 
-        //------------------------------
+    //------------------------------
+    private void setText_Custom() {
         //2. setText
         //2.1. Button: Date of birth
         //2.1.1. Lấy Dob từ SharePref
@@ -76,7 +98,6 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         editMail.setText(SharedPref.read(SharedPref.MAIL, ""));
         editLastName.setText(SharedPref.read(SharedPref.LAST_NAME, ""));
         editFirstName.setText(SharedPref.read(SharedPref.FIRST_NAME, ""));
-//        editPass.setText(SharedPref.read(SharedPref.TOKEN, ""));
         editPhone.setText(SharedPref.read(SharedPref.PHONE, ""));
 
         //2.3. TextView
@@ -87,10 +108,6 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         //2.4. Image View
         imgAvatar.setImageResource(R.drawable.doremon_anbanh);
 //        imgAvatar.setImageURI(Uri.parse(SharedPref.read(SharedPref.AVATAR, "")));
-
-        //------------------------------
-        //3. setEnabled
-        editMail.setEnabled(false);
     }
 
     private String getTodaysDate() {
@@ -133,6 +150,75 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    //Update profile
+    public void btnSave_click(View view) {
+        Long id = Long.valueOf(SharedPref.read(SharedPref.ID, -1));
+        String lastName = String.valueOf(editLastName.getText());
+        String firstName = String.valueOf(editFirstName.getText());
+        String phone = String.valueOf(editPhone.getText());
+        String txtDob = String.valueOf(btnDob.getText());
+        String avatar = SharedPref.read(SharedPref.AVATAR, "https://bom.so/IHAaqt");
+
+        String[] strDob = txtDob.split(" ");
+        String monthDob = strDob[1];
+        String dayDob = strDob[2];
+        String yearDob = strDob[strDob.length - 1];
+        String dob = yearDob + "-" + getMonthFormat(monthDob) + "-" + dayDob;
+
+        if (id == -1) {
+            Toast.makeText(getApplicationContext(), "Không thể cập nhật!",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (firstName.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Tên không được để trống!",
+                    Toast.LENGTH_LONG).show();
+            Log.d("profile_update_activity", "firstName is not null");
+            return;
+        }
+
+        RetrofitService retrofitService = new RetrofitService(getApplicationContext());
+        AccountApi accountApi = retrofitService.getRetrofit().create(AccountApi.class);
+        AccountUpdateRequest request = new AccountUpdateRequest(id, lastName, firstName, phone, dob, avatar);
+
+        accountApi.update(request).enqueue(new Callback<GeneralResponse<Object>>() {
+            @Override
+            public void onResponse(Call<GeneralResponse<Object>> call, Response<GeneralResponse<Object>> response) {
+                if (response.isSuccessful()) {
+                    tvFullName.setText(lastName + " " + firstName);
+                    Toast.makeText(getApplicationContext(), "Cập nhật thành công!",
+                            Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                    Log.d("profile_update_activity", "update success");
+
+//                    SharedPref.write(SharedPref.LAST_NAME, lastName);
+//                    SharedPref.write(SharedPref.FIRST_NAME, firstName);
+//                    SharedPref.write(SharedPref.PHONE, phone);
+//                    SharedPref.write(SharedPref.DOB, dob);
+//                    SharedPref.write(SharedPref.AVATAR, avatar);
+
+                } else {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        String error = jObjError.getString("data");
+                        Log.d("profile_update_activity", "update failed");
+                        Toast.makeText(getApplicationContext(), error,
+                                Toast.LENGTH_LONG).show();
+                    } catch (JSONException | IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GeneralResponse<Object>> call, Throwable t) {
+                Log.d("profile_update_activity", "update failed");
+            }
+        });
+    }
+
     //Back to home page
     public void btnBack_click(View view) {
         Intent intent = new Intent(ProfileUpdateAcitivity.this, MainActivity.class);
@@ -155,7 +241,7 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         }
     }
 
-    //format month
+    //format month: MMM -> MM
     private String getMonthFormat(String month) {
         if (month.toLowerCase().contains("JAN".toLowerCase()))
             return "01";
@@ -186,6 +272,7 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         return "01";
     }
 
+    //format month: MM -> MMM
     private String getMonthFormat(int month) {
         if (month == 1)
             return "JAN";
