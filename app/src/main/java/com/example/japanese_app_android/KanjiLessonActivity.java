@@ -1,6 +1,8 @@
 package com.example.japanese_app_android;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -41,6 +43,18 @@ public class KanjiLessonActivity extends AppCompatActivity {
         getRadicalByCategory(bookId);
 
         // Xử lý sự kiện khi người dùng nhấp vào một mục danh sách (nếu cần)
+    }
+
+    public void backToTerm(View view) {
+        Intent intent = new Intent(KanjiLessonActivity.this, TermActivity.class);
+        startActivity(intent);
+    }
+
+    public void openKanjiList(View view) {
+        // Truyền thông tin bài học vào Activity mới
+        Intent intent = new Intent(KanjiLessonActivity.this, KanjiActivity.class);
+        intent.putExtra("lessonId", 1);
+        startActivity(intent);
     }
 
     private void getRadicalByCategory(Integer id) {

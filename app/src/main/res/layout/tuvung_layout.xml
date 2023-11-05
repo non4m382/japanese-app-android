@@ -21,7 +21,8 @@
             android:layout_gravity="center"
             android:contentDescription="Mô tả của ImageButton"
             android:src="@drawable/doremon_muabanh"
-            android:scaleType="centerInside" />
+            android:scaleType="centerInside"
+            android:onClick="openVocabList"/>
 
 
         <TextView
