@@ -1,6 +1,10 @@
 package com.example.japanese_app_android.model;
 
-public class AlphabetEntity {
+import android.net.Uri;
+
+import java.io.Serializable;
+
+public class AlphabetEntity implements Serializable {
 
     private Integer id;
     private String hiragana;
