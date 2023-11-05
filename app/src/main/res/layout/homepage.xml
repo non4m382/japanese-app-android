@@ -42,9 +42,11 @@
                     android:textStyle="bold" />
 
                 <Button
+                    android:id="@+id/btnUpdateProfile"
+                    style="@style/button_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/button_style"
+                    android:onClick="openProfileUpdateAcitivity"
                     android:text="Chỉnh sửa" />
             </LinearLayout>
 
