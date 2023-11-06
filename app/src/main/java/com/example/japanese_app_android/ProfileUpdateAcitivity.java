@@ -106,7 +106,7 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         tvFullName.setText(last + " " + first);
 
         //2.4. Image View
-        imgAvatar.setImageResource(R.drawable.doremon_anbanh);
+        imgAvatar.setImageResource(R.drawable.doremon_muabanh);
 //        imgAvatar.setImageURI(Uri.parse(SharedPref.read(SharedPref.AVATAR, "")));
     }
 

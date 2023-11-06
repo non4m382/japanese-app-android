@@ -12,7 +12,7 @@ import com.example.japanese_app_android.util.SharedPref;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tvNguPhapDetail1, tvNguPhapDetail2, tvNguPhapDetail3;
+    private TextView tvNguPhapDetail1, tvNguPhapDetail2, tvNguPhapDetail3, name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
+        name = findViewById(R.id.name);
+
+        name.setText(SharedPref.read(SharedPref.FIRST_NAME, "User"));
 
         //Lấy dữ liệu của Ngữ Pháp detail để đẩy sang NguPhapMoiNgayDetail.class
         //Các bạn truyền dữ liệu vào thì tự sửa nhé, mình đang để dữ liệu ảo <3
