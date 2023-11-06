@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("main_activity", "radical clicked");
         startActivity(intent);
     }
+    public void openTermActivity(View view){
+        Intent intent = new Intent(MainActivity.this, TermActivity.class);
+        startActivity(intent);
+    }
 
     public void openProfileUpdateAcitivity(View view) {
         Intent intent = new Intent(MainActivity.this, ProfileUpdateAcitivity.class);
@@ -71,4 +75,5 @@ public class MainActivity extends AppCompatActivity {
         Log.d("main_activity", "alphabet clicked");
         startActivity(intent);
     }
+
 }

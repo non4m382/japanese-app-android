@@ -2,6 +2,7 @@ package com.example.japanese_app_android.model;
 
 public class VocabularyEntity {
     private Integer id;
+    private Integer lessonId;
 
     private String kanji;
 
@@ -13,8 +14,9 @@ public class VocabularyEntity {
 
     private String example;
 
-    public VocabularyEntity(Integer id, String kanji, String meaning, String name, String sound, String example) {
+    public VocabularyEntity(Integer id,Integer lessonId, String kanji, String meaning, String name, String sound, String example) {
         this.id = id;
+        this.lessonId = lessonId;
         this.kanji = kanji;
         this.meaning = meaning;
         this.name = name;

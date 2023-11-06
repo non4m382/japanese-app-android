@@ -4,6 +4,7 @@ package com.example.japanese_app_android.model;
 public class KanjiEntity {
 
     private Integer id;
+    private Integer lessonId;
     private String reading;
 
     private String writing;
@@ -18,8 +19,9 @@ public class KanjiEntity {
         return id;
     }
 
-    public KanjiEntity(Integer id, String reading, String writing, String meaning, String kunyomi, String onyomi) {
+    public KanjiEntity(Integer id, Integer lessonId,String reading, String writing, String meaning, String kunyomi, String onyomi) {
         this.id = id;
+        this.id = lessonId;
         this.reading = reading;
         this.writing = writing;
         this.meaning = meaning;

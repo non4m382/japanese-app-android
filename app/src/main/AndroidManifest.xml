@@ -27,9 +27,6 @@
             android:name=".ProfileUpdateAcitivity"
             android:exported="false" />
         <activity
-            android:name=".AlphabetActivity"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
@@ -42,10 +39,10 @@
             android:name=".RadicalActivity"
             android:exported="false" />
         <activity android:name=".KanjiActivity" />
+        <activity android:name=".KanjiLessonActivity" />
         <activity android:name=".VocabActivity" />
-        <activity
-            android:name=".KanjiLessonActivity"
-            android:exported="false" />
+        <activity android:name=".TermActivity" />
+        <activity android:name=".VocabLessonActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

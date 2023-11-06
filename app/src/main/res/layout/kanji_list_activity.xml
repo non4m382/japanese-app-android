@@ -11,13 +11,20 @@
         android:background="#00bcd5"
         tools:ignore="MissingConstraints">
 
-
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bài 1"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_centerInParent="true" />
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:background="#00bcd5"
             android:contentDescription="@string/back"
             android:onClick="openHomepage"
