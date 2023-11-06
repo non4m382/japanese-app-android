@@ -20,6 +20,11 @@ import com.example.japanese_app_android.model.CategoryEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AlphabetActivity extends AppCompatActivity {
 
@@ -29,10 +34,17 @@ public class AlphabetActivity extends AppCompatActivity {
     private Spinner spinner;
 
     ImageButton btnback;
+
+    RetrofitService retrofitService;
+
+    AlphabetApi alphabetApi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alphabet);
+        retrofitService = new RetrofitService(getApplicationContext());
+        alphabetApi = retrofitService.getRetrofit().create(AlphabetApi.class);
 
         btnback = findViewById(R.id.btn_back);
 
@@ -54,28 +66,39 @@ public class AlphabetActivity extends AppCompatActivity {
                 String select = (String) parent.getSelectedItem();
                 Log.d("ok", select);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Nothing to do
             }
         });
 
-        AlphabetAdapter adapter = new AlphabetAdapter(getAlphabetList(), this, spinner);
-
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 5);
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        getAllAlphabet();
     }
 
-    private ArrayList<AlphabetEntity> getAlphabetList() {
-        alphabetList=new ArrayList<>();
-        alphabetList.add(new AlphabetEntity(1, "あ", "ア", "a", "https://drive.google.com/uc?export=download&id=1q81DZA4HUmOgQhpaSGKPL9xtsuLwzXLF", "https://drive.google.com/uc?id=1V2J_3aPnYDQ9IOtJ4lyuIFjW15wD28R_", "", 1));
-        alphabetList.add(new AlphabetEntity(2, "い", "イ", "i", "sound", "writing ", "", 1));
-        alphabetList.add(new AlphabetEntity(3, "う", "ウ", "u", "sound", "writing ", "", 1));
-        alphabetList.add(new AlphabetEntity(4, "え", "エ", "e", "sound", "writing ", "", 1));
-        alphabetList.add(new AlphabetEntity(5, "お", "オ", "o", "sound", "writing ", "", 1));
-        alphabetList.add(new AlphabetEntity(6, "か", "カ", "ka", "sound", "writing ", "", 1));
-        return alphabetList;
+    private void getAllAlphabet() {
+        ArrayList<AlphabetEntity> alphabetEntities = new ArrayList<>();
+        alphabetApi.getAllLesson().enqueue(new Callback<GeneralResponse<List<AlphabetEntity>>>() {
+            @Override
+            public void onResponse(Call<GeneralResponse<List<AlphabetEntity>>> call, Response<GeneralResponse<List<AlphabetEntity>>> response) {
+                if (response.isSuccessful()) {
+                    GeneralResponse<List<AlphabetEntity>> generalResponse = response.body();
+                    alphabetEntities.addAll(generalResponse.getData());
+
+                    AlphabetAdapter adapter = new AlphabetAdapter(alphabetEntities, getApplicationContext());
+
+                    GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 5);
+
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(adapter);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GeneralResponse<List<AlphabetEntity>>> call, Throwable t) {
+                // Nothing to do yet
+            }
+        });
     }
 }

@@ -56,7 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@null"
-        android:text="Trang chủ" />
+        android:text="Trang chủ"
+        android:onClick="openHomepage"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -97,7 +98,8 @@
             android:layout_height="120dp"
             android:src="@drawable/han_tu"
             android:scaleType="centerCrop"
-            android:layout_margin="25dp"/>
+            android:layout_margin="25dp"
+            android:onClick="openKanjiLesson"/>
 
 
     </LinearLayout>
@@ -120,7 +122,8 @@
             android:layout_height="120dp"
             android:src="@drawable/tu_vung"
             android:scaleType="centerCrop"
-            android:layout_margin="25dp"/>
+            android:layout_margin="25dp"
+            android:onClick="openVocabLesson"/>
 
     </LinearLayout>
     </GridLayout>

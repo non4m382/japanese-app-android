@@ -89,15 +89,6 @@
                 android:minHeight="30dp" />
 
             <EditText
-                android:id="@+id/profileUpdate_passwordInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint="Mật khẩu"
-                android:inputType="textPassword"
-                android:minHeight="30dp" />
-
-            <EditText
                 android:id="@+id/profileUpdate_phoneInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,6 +136,7 @@
                 android:layout_marginRight="30dp"
                 android:backgroundTint="@color/blue"
                 android:text="Lưu"
+                android:onClick="btnSave_click"
                 android:textColor="#FFFFFF" />
 
             <Button

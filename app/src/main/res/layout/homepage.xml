@@ -95,18 +95,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="30sp">
+                    >
 
                     <ImageView
                         android:layout_width="100sp"
                         android:layout_height="100sp"
-                        android:src="@drawable/sach1" />
+                        android:src="@drawable/sach1"
+                        android:onClick="openTermActivity"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="So cap"
+                        android:text="Sơ cấp"
                         android:textSize="18sp"
 
                         />
@@ -126,7 +127,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="So cap"
+                        android:text="Sơ trung"
                         android:textSize="18sp"
 
                         />
@@ -147,7 +148,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="So cap"
+                        android:text="Trung cấp"
                         android:textSize="18sp"
 
                         />
@@ -188,6 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:paddingRight="10sp"
                     android:gravity="center">
 
                     <ImageButton
@@ -209,6 +211,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:paddingLeft="10sp"
                     android:gravity="center">
 
                     <ImageButton
