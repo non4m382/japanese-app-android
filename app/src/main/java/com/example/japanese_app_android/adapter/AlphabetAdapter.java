@@ -3,19 +3,15 @@ package com.example.japanese_app_android.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.japanese_app_android.AlphabetDetailActivity;
 import com.example.japanese_app_android.R;
 import com.example.japanese_app_android.model.AlphabetEntity;
@@ -44,12 +40,7 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.Alphab
     public void onBindViewHolder(@NonNull AlphabetHolder holder, int position) {
         final AlphabetEntity alphabetEntity = alphabetList.get(position);
         holder.tv_alphabet.setText(alphabetEntity.getHiragana());
-        holder.layoutItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickDetail(alphabetEntity);
-            }
-        });
+        holder.layoutItem.setOnClickListener(view -> onClickDetail(alphabetEntity));
 
     }
 
@@ -58,6 +49,7 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.Alphab
         Bundle bundle = new Bundle();
         bundle.putSerializable("alphabet_detail", alphabetEntity);
         intent.putExtras(bundle);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
