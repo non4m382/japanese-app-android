@@ -1,23 +1,25 @@
 package com.example.japanese_app_android;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridLayout;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.example.japanese_app_android.R;
 import com.example.japanese_app_android.adapter.AlphabetAdapter;
 import com.example.japanese_app_android.model.AlphabetEntity;
-import com.example.japanese_app_android.model.response.GeneralResponse;
-import com.example.japanese_app_android.retrofit.AlphabetApi;
-import com.example.japanese_app_android.retrofit.RetrofitService;
+import com.example.japanese_app_android.model.CategoryEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,6 +29,7 @@ import retrofit2.Response;
 public class AlphabetActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private ArrayList<AlphabetEntity> alphabetList;
 
     private Spinner spinner;
 
@@ -45,12 +48,15 @@ public class AlphabetActivity extends AppCompatActivity {
 
         btnback = findViewById(R.id.btn_back);
 
-        btnback.setOnClickListener(view -> {
-            //Thoát AlphabetDetailActivity
-            finish();
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Thoát AlphabetDetailActivity
+                finish();
+            }
         });
 
-        recyclerView = findViewById(R.id.rc_alphabet);
+        recyclerView=findViewById(R.id.rc_alphabet);
 
         spinner = findViewById(R.id.alphabet_spinner);
 
