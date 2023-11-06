@@ -24,6 +24,8 @@ public class AlphabetDetailActivity extends AppCompatActivity {
 
     MediaPlayer soundAlphabet;
 
+    AlphabetEntity alphabetEntity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +39,11 @@ public class AlphabetDetailActivity extends AppCompatActivity {
             }
         });
 
+        //Lấy dữ liệu từ Intent để lấy image của chữ cái
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            AlphabetEntity alphabetEntity = (AlphabetEntity) bundle.get("alphabet_detail");
+            alphabetEntity = (AlphabetEntity) bundle.get("alphabet_detail");
+            //Hiển thị hình ảnh
             ImageView imgAlphabet = findViewById(R.id.img_alphabet_detail);
             Glide.with(this)
                     .load(alphabetEntity.getWritingHiragana())
@@ -49,5 +53,30 @@ public class AlphabetDetailActivity extends AppCompatActivity {
             // Xử lý trường hợp khi không có dữ liệu được truyền từ Intent
         }
 
-}
+        //Ánh xạ cho button sound
+        btnsound = findViewById(R.id.sound_button);
+        btnsound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                playSound();
+            }
+        });
+
+    }
+
+    private void playSound() {
+        if (alphabetEntity != null) {
+            String soundUrl = alphabetEntity.getSound();
+            soundAlphabet = new MediaPlayer();
+            soundAlphabet.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+            try {
+                soundAlphabet.setDataSource(soundUrl);
+                soundAlphabet.prepare();
+                soundAlphabet.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

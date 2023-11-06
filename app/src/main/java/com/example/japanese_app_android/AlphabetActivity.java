@@ -19,6 +19,7 @@ import com.example.japanese_app_android.model.AlphabetEntity;
 import com.example.japanese_app_android.model.CategoryEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlphabetActivity extends AppCompatActivity {
 
@@ -53,22 +54,13 @@ public class AlphabetActivity extends AppCompatActivity {
                 String select = (String) parent.getSelectedItem();
                 Log.d("ok", select);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Nothing to do
             }
         });
-//        alphabetList=new ArrayList<>();
-//
-//        alphabetList.add(new AlphabetEntity(1, "あ", "ア", "a", "sound", "writing ", "", 1));
-//        alphabetList.add(new AlphabetEntity(2, "い", "イ", "i", "sound", "writing ", "", 1));
-//        alphabetList.add(new AlphabetEntity(3, "う", "ウ", "u", "sound", "writing ", "", 1));
-//        alphabetList.add(new AlphabetEntity(4, "え", "エ", "e", "sound", "writing ", "", 1));
-//        alphabetList.add(new AlphabetEntity(5, "お", "オ", "o", "sound", "writing ", "", 1));
-//        alphabetList.add(new AlphabetEntity(6, "か", "カ", "ka", "sound", "writing ", "", 1));
 
-        AlphabetAdapter adapter = new AlphabetAdapter(getAlphabetList(), this);
+        AlphabetAdapter adapter = new AlphabetAdapter(getAlphabetList(), this, spinner);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 5);
 
@@ -78,7 +70,7 @@ public class AlphabetActivity extends AppCompatActivity {
 
     private ArrayList<AlphabetEntity> getAlphabetList() {
         alphabetList=new ArrayList<>();
-        alphabetList.add(new AlphabetEntity(1, "あ", "ア", "a", "https://drive.google.com/file/d/1q81DZA4HUmOgQhpaSGKPL9xtsuLwzXLF/view?usp=sharing", "https://drive.google.com/uc?id=1V2J_3aPnYDQ9IOtJ4lyuIFjW15wD28R_", "", 1));
+        alphabetList.add(new AlphabetEntity(1, "あ", "ア", "a", "https://drive.google.com/uc?export=download&id=1q81DZA4HUmOgQhpaSGKPL9xtsuLwzXLF", "https://drive.google.com/uc?id=1V2J_3aPnYDQ9IOtJ4lyuIFjW15wD28R_", "", 1));
         alphabetList.add(new AlphabetEntity(2, "い", "イ", "i", "sound", "writing ", "", 1));
         alphabetList.add(new AlphabetEntity(3, "う", "ウ", "u", "sound", "writing ", "", 1));
         alphabetList.add(new AlphabetEntity(4, "え", "エ", "e", "sound", "writing ", "", 1));

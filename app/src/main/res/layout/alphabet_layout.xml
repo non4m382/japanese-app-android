@@ -13,13 +13,14 @@
         android:id="@+id/layout_alphabet_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_alphabet"
+            android:textSize="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
             android:textAlignment="center"
             android:gravity="center"/>
 

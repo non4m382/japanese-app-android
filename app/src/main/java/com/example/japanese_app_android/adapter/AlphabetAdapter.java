@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,10 +28,13 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.Alphab
     private Context context;
     private ArrayList<AlphabetEntity> alphabetList;
 
+    private Spinner spinner;
 
-    public AlphabetAdapter(ArrayList<AlphabetEntity> recycleAlphabetArrayList, Context context) {
+
+    public AlphabetAdapter(ArrayList<AlphabetEntity> recycleAlphabetArrayList, Context context, Spinner spinner) {
         this.alphabetList = recycleAlphabetArrayList;
         this.context = context;
+        this.spinner = spinner;
     }
 
     @NonNull
@@ -43,6 +47,20 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.Alphab
     @Override
     public void onBindViewHolder(@NonNull AlphabetHolder holder, int position) {
         final AlphabetEntity alphabetEntity = alphabetList.get(position);
+
+        //Kiểm tra giá trị được chọn từ Spinner
+        String selectedAlphabet = spinner.getSelectedItem().toString();
+
+        String displayText;
+        if (selectedAlphabet.equals("Hiragana")) {
+            displayText = alphabetEntity.getHiragana();
+        } else if (selectedAlphabet.equals("Katakana")) {
+            displayText = alphabetEntity.getKatakana();
+        } else {
+            displayText = alphabetEntity.getHiragana(); //giá trị mặc định nếu không có lựa chọn nào được chọn
+        }
+
+        holder.tv_alphabet.setText(displayText);
         holder.tv_alphabet.setText(alphabetEntity.getHiragana());
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
