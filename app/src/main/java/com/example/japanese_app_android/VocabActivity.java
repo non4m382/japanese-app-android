@@ -47,6 +47,9 @@ public class VocabActivity extends AppCompatActivity {
         List<VocabularyEntity> radicalList = new ArrayList<>();
         radicalList.add(new VocabularyEntity(1, 1,"私","tôi","わたし","watashi","シ"));
         radicalList.add(new VocabularyEntity(2, 1,"年","Năm","とし","toshi","年をとる"));
+        radicalList.add(new VocabularyEntity(3, 1,"何の","Nào","なんの","nanno","何の話"));
+        radicalList.add(new VocabularyEntity(4, 1,"方","Phương diện","かた","kata","年をとる"));
+        radicalList.add(new VocabularyEntity(5, 1,"自分","Bản thân","じぶん","jibun","自分の部屋"));
         return radicalList;
     }
 

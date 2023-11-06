@@ -54,6 +54,11 @@ public class KanjiActivity extends AppCompatActivity {
         List<KanjiEntity> radicalList = new ArrayList<>();
         radicalList.add(new KanjiEntity(1, 1, "Tư", "私", "cá nhân", "わたし", "シ"));
         radicalList.add(new KanjiEntity(2, 1, "Tuế", "歳", "tuổi", "とし", "セイ"));
+        radicalList.add(new KanjiEntity(3, 1, "QUỐC", "国", "đất nước", "くに", "コク"));
+        radicalList.add(new KanjiEntity(4, 1, "NHÂN", "人", "Người", "ひと", "ジン"));
+        radicalList.add(new KanjiEntity(6, 1, "NHẬT", "日", "Mặt trời", "ひ", "ニチニチ"));
+        radicalList.add(new KanjiEntity(7, 1, "NGUYỆT", "月", "Mặt trăng", "つき", "ゲツ"));
+        radicalList.add(new KanjiEntity(8, 1, "TỨ", "四", "Bốn", "よん", "シ"));
         return radicalList;
     }
 
@@ -63,6 +68,6 @@ public class KanjiActivity extends AppCompatActivity {
     }
 
     public LessonEntity findKanjiLessonById(String lessonId) {
-        return new LessonEntity(1, "Bài bla bla", "Cơ bản");
+        return new LessonEntity(1, "Bài 1", "Cơ bản");
     }
 }
