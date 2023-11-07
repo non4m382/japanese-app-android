@@ -9,11 +9,11 @@ public class LoginResponseDto {
     private String lastName;
     private String firstName;
     private String phone;
-    private Date dob;
+    private String dob;
     private String avatar;
 
     public LoginResponseDto(String token, Integer id, String mail, String lastName,
-                            String firstName, String phone, Date dob, String avatar) {
+                            String firstName, String phone, String dob, String avatar) {
         this.token = token;
         this.id = id;
         this.mail = mail;
@@ -75,11 +75,11 @@ public class LoginResponseDto {
         this.phone = phone;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
