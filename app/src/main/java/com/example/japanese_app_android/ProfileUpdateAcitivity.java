@@ -25,7 +25,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -83,15 +86,16 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
     private void setText_Custom() {
         //2. setText
         //2.1. Button: Date of birth
-        //2.1.1. Lấy Dob từ SharePref
+        //2.1.1. Lấy Dob từ SharePref có format "yyyy-MM-dd"
         String txtDob = SharedPref.read(SharedPref.DOB, getTodaysDate());
         //2.1.2. Tách chuỗi để lấy ngày, tháng, năm
-        String[] strDob = txtDob.split(" ");
+        String[] strDob = txtDob.split("-");
         String monthDob = strDob[1];
         String dayDob = strDob[2];
-        String yearDob = strDob[strDob.length - 1];
+        String yearDob = strDob[0];
+
         //2.1.3. Tạo chuỗi mới theo format "dd/MM/yyyy"
-        String formatDob = dayDob + " / " + getMonthFormat(monthDob) + " / " + yearDob;
+        String formatDob = dayDob + " / " + monthDob + " / " + yearDob;
         btnDob.setText(formatDob.toString());
 
         //2.2. EditText
@@ -135,7 +139,7 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
         //androidx.appcompat.app.AlertDialog (calendar view)
-        int style = AlertDialog.BUTTON_POSITIVE;
+        int style = AlertDialog.BUTTON_NEUTRAL;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
         datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
@@ -151,7 +155,7 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
     }
 
     //Update profile
-    public void btnSave_click(View view) {
+    public void btnSave_click(View view) throws ParseException {
         Long id = Long.valueOf(SharedPref.read(SharedPref.ID, -1));
         String lastName = String.valueOf(editLastName.getText());
         String firstName = String.valueOf(editFirstName.getText());
@@ -179,8 +183,14 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
 
         RetrofitService retrofitService = new RetrofitService(getApplicationContext());
         AccountApi accountApi = retrofitService.getRetrofit().create(AccountApi.class);
-        AccountUpdateRequest request = new AccountUpdateRequest(id, lastName, firstName, phone, dob, avatar);
 
+        //full format yyyy-MM-dd
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentDob = sdf.parse(dob);
+        dob = sdf.format(currentDob);
+
+        AccountUpdateRequest request = new AccountUpdateRequest(id, lastName, firstName, phone, dob, avatar);
+        String finalDob = dob;
         accountApi.update(request).enqueue(new Callback<GeneralResponse<Object>>() {
             @Override
             public void onResponse(Call<GeneralResponse<Object>> call, Response<GeneralResponse<Object>> response) {
@@ -193,11 +203,12 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
                     finish();
                     Log.d("profile_update_activity", "update success");
 
-//                    SharedPref.write(SharedPref.LAST_NAME, lastName);
-//                    SharedPref.write(SharedPref.FIRST_NAME, firstName);
-//                    SharedPref.write(SharedPref.PHONE, phone);
-//                    SharedPref.write(SharedPref.DOB, dob);
-//                    SharedPref.write(SharedPref.AVATAR, avatar);
+                    //Lưu lại thay đổi vào sharePref
+                    SharedPref.write(SharedPref.LAST_NAME, lastName);
+                    SharedPref.write(SharedPref.FIRST_NAME, firstName);
+                    SharedPref.write(SharedPref.PHONE, phone);
+                    SharedPref.write(SharedPref.DOB, finalDob);
+                    SharedPref.write(SharedPref.AVATAR, avatar);
 
                 } else {
                     try {
@@ -239,67 +250,5 @@ public class ProfileUpdateAcitivity extends AppCompatActivity {
             Log.d("profile_update_activity", "return login");
             startActivity(intent);
         }
-    }
-
-    //format month: MMM -> MM
-    private String getMonthFormat(String month) {
-        if (month.toLowerCase().contains("JAN".toLowerCase()))
-            return "01";
-        if (month.toLowerCase().contains("FEB".toLowerCase()))
-            return "02";
-        if (month.toLowerCase().contains("MAR".toLowerCase()))
-            return "03";
-        if (month.toLowerCase().contains("APR".toLowerCase()))
-            return "04";
-        if (month.toLowerCase().contains("MAY".toLowerCase()))
-            return "05";
-        if (month.toLowerCase().contains("JUN".toLowerCase()))
-            return "06";
-        if (month.toLowerCase().contains("JUL".toLowerCase()))
-            return "07";
-        if (month.toLowerCase().contains("AUG".toLowerCase()))
-            return "08";
-        if (month.toLowerCase().contains("SEP".toLowerCase()))
-            return "09";
-        if (month.toLowerCase().contains("OCT".toLowerCase()))
-            return "10";
-        if (month.toLowerCase().contains("NOV".toLowerCase()))
-            return "11";
-        if (month.toLowerCase().contains("DEC".toLowerCase()))
-            return "12";
-
-        //default should never happen
-        return "01";
-    }
-
-    //format month: MM -> MMM
-    private String getMonthFormat(int month) {
-        if (month == 1)
-            return "JAN";
-        if (month == 2)
-            return "FEB";
-        if (month == 3)
-            return "MAR";
-        if (month == 4)
-            return "APR";
-        if (month == 5)
-            return "MAY";
-        if (month == 6)
-            return "JUN";
-        if (month == 7)
-            return "JUL";
-        if (month == 8)
-            return "AUG";
-        if (month == 9)
-            return "SEP";
-        if (month == 10)
-            return "OCT";
-        if (month == 11)
-            return "NOV";
-        if (month == 12)
-            return "DEC";
-
-        //default should never happen
-        return "JAN";
     }
 }

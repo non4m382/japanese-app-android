@@ -1,25 +1,23 @@
 package com.example.japanese_app_android;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.example.japanese_app_android.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.japanese_app_android.adapter.AlphabetAdapter;
 import com.example.japanese_app_android.model.AlphabetEntity;
-import com.example.japanese_app_android.model.CategoryEntity;
+import com.example.japanese_app_android.model.response.GeneralResponse;
+import com.example.japanese_app_android.retrofit.AlphabetApi;
+import com.example.japanese_app_android.retrofit.RetrofitService;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.List;
 
 import retrofit2.Call;
@@ -85,7 +83,7 @@ public class AlphabetActivity extends AppCompatActivity {
                     GeneralResponse<List<AlphabetEntity>> generalResponse = response.body();
                     alphabetEntities.addAll(generalResponse.getData());
 
-                    AlphabetAdapter adapter = new AlphabetAdapter(alphabetEntities, getApplicationContext());
+                    AlphabetAdapter adapter = new AlphabetAdapter(alphabetEntities, getApplicationContext(), spinner);
 
                     GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 5);
 
